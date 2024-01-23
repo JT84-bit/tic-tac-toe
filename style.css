@@ -1,0 +1,108 @@
+@font-face {
+    font-family: game-font;
+    src: url(fonts/TranscendsGames.otf);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: game-font;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container {
+    width: 500px;
+    height: 500px;
+    justify-items: center;
+}
+
+.playerOnTurn {
+    width: 300px;
+    height: 80px;
+    font-size: 32px;
+    line-height: 80px;
+    color: green;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+
+.board {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    border: solid rgba(0, 0, 0, 0.589, 0.2);
+    width: 500px;
+    height: 500px;
+   
+}
+
+.board div{
+    display: flex;
+    gap: 5px;
+    flex: 1;
+}
+
+.board div button {
+    flex:1;
+    font-size: 100px;
+}
+
+h1 {
+    font-weight:700;
+    font-size: 100px;
+    margin: 0;
+    
+}
+
+.header {
+    height: fit-content;
+    margin-bottom: 30px;
+}
+
+.winText{
+    font-size: 50px;
+    width: 60vw;
+    height: fit-content;
+    border: solid black;
+    background-color: grey;
+    text-align: center;
+    color: green;
+    padding: 20px;
+}
+
+.gameEnd {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    position: absolute;
+    left: 20%;
+    bottom: 35%;
+}
+
+.gameEnd button{
+    font-size: 16px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: game-font;
+    background-color: grey;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
