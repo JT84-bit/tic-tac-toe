@@ -1,6 +1,14 @@
+function startGame(){
+    let startButton = document.querySelector("#sign-in");
+    let sign = document.querySelector(".sign-in");
+ 
+    sign.addEventListener("submit", (e) => {
+        e.preventDefault();
+        screenController();
+    });
+};
 
-
-
+// Mades board ready
 function GameBoard () {
     const rows = 3;
     const columns = 3;
@@ -18,6 +26,7 @@ function GameBoard () {
     return {getBoard};
 }
 
+// Controls games flow
 function gameController(
     playerOne = "Player One",
     playerTwo = "Player Two"
@@ -37,6 +46,11 @@ function gameController(
     }
     ];
 
+    const setPlayerNames = (player1Name, player2Name) => {
+        players[0].name = player1Name;
+        players[1].name = player2Name;
+    }
+    
     let activeplayer = players[0];
 
     const getActivePlayer = () => activeplayer;
@@ -45,6 +59,7 @@ function gameController(
         activeplayer = activeplayer === players[0] ? players[1] : players[0] 
     };
 
+    // Checks all winning conditions after move
     function checkWinner(boardState){
 
         let column1 = 0;
@@ -64,7 +79,6 @@ function gameController(
         downUp += boardState[1][1];
         downUp += boardState[2][0];
 
-        
         function checkSum (row) {
 
             var sum = row.reduce((accumulator, currentValue) => {
@@ -91,14 +105,28 @@ function gameController(
         getboard: board.getBoard,
         getActivePlayer,
         switchPlayerTurn,
-        checkWinner
+        checkWinner,
+        setPlayerNames
     }
 
 }
 
-function screenController(){
+
+function screenController(player1, player2){
     const game = gameController();
     let board = game.getboard();
+    // Takes values from starting screene and removes it
+    let sign = document.querySelector(".sign-in");
+    const player1Name = document.querySelector("#player1");
+    const player2Name = document.querySelector("#player2");
+    let player1s = player1Name.value;
+    let player2s = player2Name.value;
+    sign.remove();
+    /* -------------------------------------------------*/
+    let playerOnTurn = document.querySelector(".playerOnTurn");
+    let container = document.querySelector(".container")
+    container.classList.remove("hidden");
+    playerOnTurn.classList.remove("hidden");
     let gamediv = document.querySelector(".board");
     let playerDiv = document.querySelector(".playerOnTurn")
     let activeplayer = game.getActivePlayer();
@@ -107,6 +135,7 @@ function screenController(){
         window.location.reload();
     });
 
+    // Draws board at game start
     const drawBoard = () => {
 
         gamediv.textContent = "";
@@ -134,6 +163,7 @@ function screenController(){
         }; 
     }   
 
+    // Checks if mark has been already placed
     function checkIfPlaced(row, index){
         if(board[row][index] === 0){
             return true;
@@ -162,9 +192,10 @@ function screenController(){
             playerDiv.textContent = `${activeplayer.name}'s turn`;
         }
     }
+
+    game.setPlayerNames(player1s, player2s);
     drawBoard();
 }
 
 
-
-screenController();
+startGame();

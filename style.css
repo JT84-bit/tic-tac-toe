@@ -18,6 +18,34 @@ body {
     align-items: center;
 }
 
+.sign-in, #sign-in {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+    justify-items: center;
+};
+
+.player1form {
+    border: solid black;
+    margin-bottom: 30px;
+}
+
+input, label{
+    width: 200px;
+    height: 80;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 25px;
+}
+
+.startGame {
+    width: 100px;
+    height: 50px;
+    font-family: game-font;
+}
 
 .container {
     width: 500px;
